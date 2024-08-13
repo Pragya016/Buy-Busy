@@ -1,0 +1,46 @@
+#formContainer {
+    height: 93vh;
+    width: 95vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+#heading {
+    color: grey;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 50vh;
+    width: 40vw;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px lightgrey;
+}
+
+#topContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+#text {
+    color: grey;
+}
+
+#submitBtn {
+    width: 70%;
+    margin-top: 10px;
+}
+
+#alert {
+    width: 63%;
+    margin-bottom: 15px;
+}

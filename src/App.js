@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import Homepage from './pages/Homepage';
+import AuthProvider, { useAuthContext } from "./context/auth.context";
+import Signin from "./pages/Signin";
+import Signup from "./pages/Signup";
+import ProductDetails from "./pages/ProductDetails";
+import Navbar from "./components/Navbar";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <AppRoutes />
+    </AuthProvider>
   );
 }
 
-export default App;
+function AppRoutes() {
+  const { isLoggedIn } = useAuthContext();
+
+  return (
+    <BrowserRouter>
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={<Homepage/>} />
+        <Route path="/sign-in" element={isLoggedIn ? <Navigate to='/' /> : <Signin />} />
+        <Route path="/sign-up" element={isLoggedIn ? <Navigate to='/' /> : <Signup/>} />
+        <Route path="/product/:id" element={<ProductDetails/>} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
