@@ -1,0 +1,89 @@
+#container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    box-sizing: border-box;
+    overflow: scroll;
+    cursor: default;
+}
+
+#leftSide {
+    width: 30%;
+    overflow: hidden;
+}
+
+#rightSide {
+    width: 55%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#image {
+    height: 400px;
+    width: 400px;
+}
+
+#category {
+    color: grey;
+}
+
+#title {
+    margin: 0;
+}
+
+#ratingContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 15px 0;
+}
+
+#rating {
+    position: relative;
+    bottom: 5px;
+    font-weight: 500;
+    color: grey;
+    margin: 0;
+}
+
+#review {
+    margin: 0;
+    color: grey;
+    font-weight: 500;
+}
+
+#price {
+    color: #008001;
+    margin: 0;
+}
+
+#descHeading {
+    margin-top: 50px;
+    margin-bottom: 5px;
+}
+
+#desc {
+    color: grey;
+    line-height: 2;
+    letter-spacing: 1px;
+    font-size: 1rem;
+    margin: 0;
+}
+
+#btnContainer {
+    display: flex;
+    margin-top: 35px;
+}
+
+#orderBtn {
+    margin-right: 10px;
+    width: 30%;
+}
+
+#cartBtn {
+    width: 30%;
+}

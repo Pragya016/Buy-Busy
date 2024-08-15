@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import ProductCard from './ProductCard';
-import ProductSkeleton from './ProductSkeleton';
+import ProductsSkeleton from './ProductsSkeleton';
 import styles from './css/products.module.css';
 
 export default function Products() {
@@ -10,17 +10,21 @@ export default function Products() {
 
     useEffect(() => {
         async function getProducts() {
-            const {data} = await axios.get(process.env.REACT_APP_API_URL)
-            return data;
+            const res = await axios.get(process.env.REACT_APP_API_URL);
+
+            if (res.status === 200) {
+                setProducts(res.data);
+                setIsLoading(false);
+            }
         }
         
         // fetch the data and store in the products state
-        getProducts().then(data => setProducts(data)).finally(() => setIsLoading(false));
+        getProducts()
     }, [])
 
   return (
     <div id={styles.container}>
-        {isLoading && <ProductSkeleton/>}
+        {isLoading && <ProductsSkeleton/>}
         {products.map(product => (
             <ProductCard product={product} key={product.id}/>
         ))}      

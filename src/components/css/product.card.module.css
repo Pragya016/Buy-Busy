@@ -39,7 +39,7 @@
 
 .text {
     margin: 0;
-    width: 92%;
+    width: 100%;
 }
 
 #title {
@@ -52,7 +52,7 @@
 
 #price {
     font-weight: 600;
-    margin:3px 0;
+    margin:8px 0;
 }
 
 #note {
