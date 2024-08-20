@@ -1,0 +1,40 @@
+#contentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#tick {
+    font-size: 8rem;
+    margin-bottom: 15px;
+}
+
+#amount {
+    font-size: 2rem;
+    margin: 15px;
+}
+
+.text {
+    margin: 5px;
+    color: grey;
+}
+
+#link {
+    color: grey;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+#btn {
+    margin-top: 30px; 
+}
+
+#thankText {
+    margin: 10px;
+}
+
+#discount {
+    font-weight: 600;
+    color: green;
+}

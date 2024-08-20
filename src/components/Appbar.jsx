@@ -24,10 +24,10 @@ export default function MenuAppBar() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const products = useSelector(state => state.cart);
-    const badgeContent = products.length > 0 ? products.length : 0;
+    const badgeContent = products.reduce((total, item) => total + item.quantity, 0);
 
     React.useEffect(() => {
-        if (isLoggedIn) {
+        if (currentUser) {
             dispatch(getProducts(currentUser.uid));
         }
     }, [isLoggedIn, currentUser])
@@ -58,6 +58,10 @@ export default function MenuAppBar() {
         }
     }
 
+    function handleDisplayOrders() {
+        navigate('/orders')
+    }
+
     function handleMenu (event) {
         setAnchorEl(event.currentTarget);
     };
@@ -83,8 +87,8 @@ export default function MenuAppBar() {
                         </Button> 
                         </Box>
                         <SearchBar/>
-                    <IconButton size="large" aria-label="show 4 new mails" color="inherit" onClick={() => navigate('/cart')}>
-                        <Badge badgeContent={badgeContent} color="error">
+                    <IconButton size="large" color="inherit" onClick={() => navigate('/cart')}>
+                        <Badge badgeContent={badgeContent || 0} color="error">
                             <ShoppingCartIcon />
                         </Badge>
                     </IconButton>
@@ -113,6 +117,7 @@ export default function MenuAppBar() {
                         open={Boolean(anchorEl)}
                         onClose={handleClose}
                     >
+                        <MenuItem onClick={handleDisplayOrders}>My Orders</MenuItem>
                         {isLoggedIn && <MenuItem onClick={handleLogoutUser}>Logout</MenuItem>}
                         {!isLoggedIn && <MenuItem onClick={() => navigate('/sign-in')}>Login</MenuItem>}
                         <MenuItem onClick={handleDeleteUser}>Delete My Account</MenuItem>

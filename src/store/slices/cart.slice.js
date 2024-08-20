@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { addToCart, getProducts } from "../firebase.services";
+import { addToCart, getProducts, removeFromCart } from "../firebase.services";
 
 const cartSlice = createSlice({
     name: 'cart',
@@ -7,11 +7,14 @@ const cartSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(addToCart.fulfilled, (state, action) => {
-            return [action.payload, ...state];
+            return action.payload;
         })
 
         builder.addCase(getProducts.fulfilled, (state, action) => {
-            console.log(action.payload)
+            return action.payload;
+        })
+
+        builder.addCase(removeFromCart.fulfilled, (state, action) => {
             return action.payload;
         })
     }

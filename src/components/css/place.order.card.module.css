@@ -1,0 +1,48 @@
+#container {
+    height: 370px;
+    border: 1px solid lightgrey;
+    width: 30%;
+    padding: 20px;
+    overflow: scroll;
+    background-color: white;
+}
+
+#heading {
+    text-transform: uppercase;
+    color: grey;
+    margin: 0;
+}
+
+.box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text {
+    font-weight: 500;
+}
+
+#totalAmountText, #totalAmount{
+    margin: 0;
+}
+
+#btn {
+    width: 100%;
+    font-weight: bold;
+}
+
+#deliveryPrice {
+    color: grey;
+    text-decoration: line-through;
+    margin-right: 3px;
+}
+
+.price {
+    color: green;
+}
+
+.hr {
+ border-top: 1px dashed lightgrey;   
+}

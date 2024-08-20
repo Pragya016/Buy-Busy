@@ -2,11 +2,12 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import styles from './css/product.details.module.css';
-import { Button, Rating } from '@mui/material';
+import { Button, CircularProgress, Rating } from '@mui/material';
 import ProductDetailsSkeleton from './ProductDetailsSkeleton';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../store/firebase.services';
 import { useAuthContext } from '../context/auth.context';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 export default function ProductDetails() {
     const { id } = useParams();
@@ -16,6 +17,7 @@ export default function ProductDetails() {
     const dispatch = useDispatch();
     const { isLoggedIn, currentUser } = useAuthContext();
     const navigate = useNavigate();
+    const rating = product.rating?.rate === 1 ? 1 : Math.floor(product.rating?.rate);
 
     useEffect(() => {
         async function getProductDetails() {
@@ -37,7 +39,6 @@ export default function ProductDetails() {
     function handleAddToCart(product) {
         if (isLoggedIn) {
             dispatch(addToCart({ productId : String(product.id), userId : currentUser.uid}));
-            // dispatch(addToCart({ product, userId : currentUser.uid}));
         } else {
             navigate('/sign-in');
         }
@@ -45,7 +46,8 @@ export default function ProductDetails() {
     
     return (
         <>
-            {isLoading && <ProductDetailsSkeleton />}
+            {isLoading && <div id={styles.loaderContainer}><CircularProgress/></div>}
+            {/* {isLoading && <ProductDetailsSkeleton />} */}
             {!isLoading && <div id={styles.container}>
                 <div id={styles.leftSide}>
                     <img src={product.image} alt={product.title} id={styles.image} />
@@ -56,7 +58,7 @@ export default function ProductDetails() {
                     <div id={styles.ratingContainer}>
                         <div> 
                             <span id={styles.rating}>{product.rating?.rate}</span>
-                            <Rating name="read-only" value={product.rating?.rate} readOnly />
+                            <Rating name="read-only" value={rating} readOnly />
                         </div>
                         <p id={styles.review}>{product.rating?.count} reviews</p>
                     </div>
@@ -64,8 +66,9 @@ export default function ProductDetails() {
                     <h3 id={styles.descHeading}>About this item</h3>
                     <p id={styles.desc}>{product.description}</p>
                 <div id={styles.btnContainer}>
-                    <Button variant='contained' color='warning' id={styles.orderBtn}>Order Now</Button>
-                    <Button variant='contained' id={styles.cartBtn} onClick={() => handleAddToCart(product)} >Add To Cart</Button>
+                    {/* <Button variant='contained' id={styles.orderBtn} color='warning' onClick={() => navigate('/cart')} >Order Now</Button> */}
+                    {/* <OrderDialog btnId={styles.orderBtn} title='Order Now' totalAmount={price} /> */}
+                    <Button variant='contained' id={styles.cartBtn} color='warning' onClick={() => handleAddToCart(product)} >Add To Cart<AddShoppingCartIcon style={{marginLeft:'5px', fontSize:'1.3rem'}}/></Button>
                 </div>
                 </div>
             </div>}
