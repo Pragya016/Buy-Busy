@@ -5,7 +5,6 @@ import { Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { useAuthContext } from '../context/auth.context';
 import { removeFromCart } from '../store/firebase.services';
-import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function CartItem({product}) {

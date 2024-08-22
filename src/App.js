@@ -11,23 +11,17 @@ import store from './store/store'
 import CartPage from "./pages/CartPage";
 import OrdersPage from "./pages/OrdersPage";
 import ErrorPage from "./pages/ErrorPage";
-import { createContext, useMemo, useState } from "react";
-
-export const SearchContext = createContext();
 
 export default function App() {
-
-  const [searchVal, setSearchVal] = useState('');
+  // TODO : add search and filter functionality 
 
   return (
     <Provider store={store}>
-      <SearchContext.Provider value={{ searchVal, setSearchVal }}>
       <AuthProvider>
         <CartProvider>
           <AppRoutes />
         </CartProvider>
         </AuthProvider>
-      </SearchContext.Provider>
     </Provider>
   );
 }

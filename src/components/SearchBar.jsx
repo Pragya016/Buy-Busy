@@ -1,12 +1,8 @@
+import React from 'react'
 import SearchIcon from '@mui/icons-material/Search';
 import { alpha, InputBase, styled } from '@mui/material';
-import React, { useContext, useState } from 'react'
-import { SearchContext } from '../App';
 
 export default function SearchBar() {
-
-  // const [search, setSearch] = useState([]);
-  const {searchVal, setSearchVal} = useContext(SearchContext);
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -55,8 +51,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
             <StyledInputBase
               placeholder="search products…"
               inputProps={{ 'aria-label': 'search' }}
-              onChange={(e) => setSearchVal(e.target.value)}
-              value={searchVal}
             />
     </Search>
   )

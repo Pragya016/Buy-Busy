@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './css/product.card.module.css'
-import { Button } from '@mui/material';
 
 export default function ProductCard({ product }) {
 
